@@ -51,8 +51,16 @@ ggplot(m_act_data,aes(x=time,y=steps))+theme_bw()+geom_line(colour="blue",size=1
 
 ![](Peer1_files/figure-html/unnamed-chunk-3-1.png) 
 
+```r
+#finding the interval that has on average the highest number of steps
+int_max<-m_act_data$time[m_act_data$steps==max(m_act_data$steps)]
+int_max<-strftime(int_max,format="%H:%M")
+```
+The 5 minute interval that on average has the maximum number of steps is 08:35.  
+
 ##Imputing missing values
-The next step is to see how estimating a missing value may effect the result of the mean number of steps taken per day.
+The next step is to see how estimating a missing value may effect the result of the mean number of steps taken per day.  To do this the missing value for a specific five-minute interval was estimated based on the mean value for that particular five-minute time interval.  The mean value was just computed in the above code and housed in variable m_act_data.
+
 
 ```r
 #Find the number of missing time periods
